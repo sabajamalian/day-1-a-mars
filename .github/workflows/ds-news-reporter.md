@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 engine:
   id: copilot
@@ -15,7 +14,7 @@ engine:
 
 safe-outputs:
   noop:
-    report-as-issue: false
+    report-as-issue: true
 ---
 
 # Daily Data Science Advancements Report
