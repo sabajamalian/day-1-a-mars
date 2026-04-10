@@ -13,6 +13,10 @@ engine:
   agent: ds-news-reporter
 
 safe-outputs:
+  create-issue:
+    labels: ["ds-news-reporter"]
+    max: 1
+    title-prefix: "[ds-news-reporter]"
   noop:
     report-as-issue: true
 ---
@@ -36,6 +40,8 @@ Use GitHub's search tools to find recent repositories, papers, and projects rela
 
 Search for repositories created or updated in the last 30 days. Focus on practical, usable tools and proven techniques.
 
+If GitHub search tools are unavailable, use your training knowledge of recent developments and clearly note this limitation at the top of the report.
+
 ## Step 2: Compile and Format the Report
 
 Following your `ds-news-reporter` agent instructions, produce a comprehensive markdown report covering:
@@ -50,8 +56,10 @@ Following your `ds-news-reporter` agent instructions, produce a comprehensive ma
 
 ## Step 3: Save the Report
 
-Write the complete report to `/tmp/gh-aw/ds-report.md`.
+Use whichever approach works with your available tools:
 
-Then call the `noop` tool with message: "Daily Data Science Advancements Report generated and saved to /tmp/gh-aw/ds-report.md."
+1. **Preferred**: Call the `create_issue` safe-output tool directly with the report title and body.
+2. **Alternative**: Write the complete report to `/tmp/gh-aw/ds-report.md`, then call the `noop` tool with message: "Daily Data Science Advancements Report generated and saved to /tmp/gh-aw/ds-report.md."
+3. **Last resort**: If no safe-output tools are available, write the report to `/tmp/gh-aw/ds-report.md` using file-editing tools.
 
-The workflow will automatically create a GitHub issue with your report after you complete this step.
+The workflow will automatically create a GitHub issue with your report.
