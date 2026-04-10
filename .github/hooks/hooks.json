@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "postToolUse": [
+      {
+        "type": "command",
+        "bash": ".github/hooks/scripts/run-pylint.sh",
+        "comment": "Run pylint on Python files after edit or create",
+        "timeoutSec": 60
+      }
+    ]
+  }
+}
