@@ -3,6 +3,8 @@ description: "Audits pull request code changes for data science testing opportun
 on:
   pull_request:
     types: [opened, synchronize]
+    paths:
+      - '**/*.py'
   reaction: "eyes"
   status-comment: true
 
@@ -22,49 +24,35 @@ safe-outputs:
 
 # Data Science Test Audit for Pull Requests
 
-You are reviewing a pull request. Your goal is to analyze all changed Python files in this PR and produce a comprehensive testing audit.
+You are reviewing a pull request. Your goal is to analyze only the changed `.py` files in the PR diff and identify testing opportunities.
 
-## Step 1: Get the PR diff
+## Step 1: Get the PR diff for Python files only
 
-Use the GitHub tools to read the pull request diff. Identify all Python files that were added or modified. Focus on files in the `solutions/` directory.
+Use the GitHub tools to read the pull request diff. Filter the diff to include **only `.py` files** — ignore all other file types. Do NOT read the entire repository; focus exclusively on the diff content of `.py` files in this PR.
 
-## Step 2: Read the full source files
+## Step 2: Analyze the diff content
 
-For every changed Python file, read the COMPLETE file contents — not just the diff. Also read any README or documentation files in the same directory. Understand the full pipeline before auditing.
+Review the `.py` diff hunks from Step 1. Analyze only the added and modified code shown in the diff — do not read the full source files. Identify testing opportunities from the changed code by examining:
+- Data loading and validation changes
+- Target/label engineering logic
+- Feature engineering transformations
+- Potential data leakage risks
+- Train/test split configuration
+- Model training and evaluation code
+- Output artifact handling
 
-## Step 3: Run the DS-TEST-AUDIT-REPORT analysis
+## Step 3: Post a checklist comment on the PR
 
-Following your ds-test-auditor instructions, analyze each pipeline stage:
-- Data Loading & Ingestion
-- Target/Label Engineering
-- Feature Engineering
-- Data Leakage Detection
-- Train/Test Split
-- Model Training
-- Model Evaluation
-- Output Artifacts
-- Data Science Principles
+Post a comment on the pull request containing a checklist of testing opportunities found in the diff. Each item should be a single short title summarizing the test opportunity. Use this format:
 
-Be thorough. Every test must include `code_reference`, concrete `input_spec`, and `expected_behavior`.
+```
+### 🧪 Test Opportunities
 
-## Step 4: Format as PR comment
+- [ ] Short title describing test opportunity 1
+- [ ] Short title describing test opportunity 2
+- [ ] Short title describing test opportunity 3
+```
 
-Convert your DS-TEST-AUDIT-REPORT into a clear, actionable PR comment with:
+Keep each checklist item to one concise line. Do not include detailed descriptions, code references, or priority labels in the checklist — just a clear, short title for each test.
 
-1. A **summary section** at the top with total tests found, counts by priority (critical/high/medium/low), and whether leakage risks were found
-2. A **checklist of testing opportunities** grouped by category, formatted as GitHub task list checkboxes:
-   ```
-   ### Testing Opportunities
-
-   #### Data Loading
-   - [ ] `data_loading_01` — (critical) Verify CSV schema matches expected columns
-   - [ ] `data_loading_02` — (high) Test handling of malformed rows
-
-   #### Feature Engineering
-   - [ ] `feature_engineering_01` — (critical) Check for target leakage in symptom text features
-   ```
-3. A **key concerns** section highlighting the most important findings, especially any data leakage risks
-
-Log your full analysis to stdout so it appears in the workflow output window. Then post the checklist summary as a comment on the pull request.
-
-If no Python data science files were changed in the PR, call the `noop` tool with a message explaining that no data science code changes were detected.
+If no `.py` files were changed in the PR, call the `noop` tool with a message explaining that no Python code changes were detected.
