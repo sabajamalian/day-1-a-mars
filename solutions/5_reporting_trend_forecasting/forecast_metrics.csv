@@ -1,0 +1,13 @@
+industry,model,MAE,RMSE,MAPE_%
+Vit/Min/Prot/Unconv Diet(Human/Animal),Prophet,475.53,557.26,692.61
+Vit/Min/Prot/Unconv Diet(Human/Animal),ARIMA,504.07,574.43,708.34
+Cosmetics,Prophet,267.18,299.23,661.83
+Cosmetics,ARIMA,319.02,379.2,1009.34
+Nuts/Edible Seed,Prophet,5.01,6.0,116.88
+Nuts/Edible Seed,ARIMA,6.38,8.07,139.41
+Vegetables/Vegetable Products,Prophet,101.47,133.03,203.11
+Vegetables/Vegetable Products,ARIMA,100.13,132.42,182.47
+Soft Drink/Water,Prophet,3.14,4.78,76.57
+Soft Drink/Water,ARIMA,4.99,6.45,104.53
+Bakery Prod/Dough/Mix/Icing,Prophet,3.98,4.48,30.89
+Bakery Prod/Dough/Mix/Icing,ARIMA,5.88,7.4,61.85
