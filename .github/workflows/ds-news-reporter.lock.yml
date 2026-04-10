@@ -36,7 +36,7 @@
 #   - actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
 #   - github/gh-aw-actions/setup@v0.67.1
 
-name: "Daily Data Science Advancements Report"
+name: "Daily Data Science Find"
 "on":
   schedule:
   - cron: "0 8 * * *"
@@ -53,7 +53,7 @@ permissions: {}
 concurrency:
   group: "gh-aw-${{ github.workflow }}"
 
-run-name: "Daily Data Science Advancements Report"
+run-name: "Daily Data Science Find"
 
 jobs:
   activation:
@@ -83,7 +83,7 @@ jobs:
           GH_AW_INFO_VERSION: "latest"
           GH_AW_INFO_AGENT_VERSION: "latest"
           GH_AW_INFO_CLI_VERSION: "v0.67.1"
-          GH_AW_INFO_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          GH_AW_INFO_WORKFLOW_NAME: "Daily Data Science Find"
           GH_AW_INFO_EXPERIMENTAL: "false"
           GH_AW_INFO_SUPPORTS_TOOLS_ALLOWLIST: "true"
           GH_AW_INFO_STAGED: "false"
@@ -835,7 +835,7 @@ jobs:
         env:
           GH_AW_AGENT_OUTPUT: ${{ steps.setup-agent-output-env.outputs.GH_AW_AGENT_OUTPUT }}
           GH_AW_NOOP_MAX: "1"
-          GH_AW_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          GH_AW_WORKFLOW_NAME: "Daily Data Science Find"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_NOOP_REPORT_AS_ISSUE: "true"
@@ -852,7 +852,7 @@ jobs:
         env:
           GH_AW_AGENT_OUTPUT: ${{ steps.setup-agent-output-env.outputs.GH_AW_AGENT_OUTPUT }}
           GH_AW_MISSING_TOOL_CREATE_ISSUE: "true"
-          GH_AW_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          GH_AW_WORKFLOW_NAME: "Daily Data Science Find"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -866,7 +866,7 @@ jobs:
         env:
           GH_AW_AGENT_OUTPUT: ${{ steps.setup-agent-output-env.outputs.GH_AW_AGENT_OUTPUT }}
           GH_AW_REPORT_INCOMPLETE_CREATE_ISSUE: "true"
-          GH_AW_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          GH_AW_WORKFLOW_NAME: "Daily Data Science Find"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -880,7 +880,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ steps.setup-agent-output-env.outputs.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          GH_AW_WORKFLOW_NAME: "Daily Data Science Find"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_WORKFLOW_ID: "ds-news-reporter"
@@ -980,7 +980,7 @@ jobs:
         if: always() && steps.detection_guard.outputs.run_detection == 'true'
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          WORKFLOW_NAME: "Daily Data Science Advancements Report"
+          WORKFLOW_NAME: "Daily Data Science Find"
           WORKFLOW_DESCRIPTION: "Runs daily to research and report the latest Data Science advancements with focus on Retail, Consumer Goods, and Snacking industry applications"
           HAS_PATCH: ${{ needs.agent.outputs.has_patch }}
         with:
@@ -1067,7 +1067,7 @@ jobs:
       GH_AW_ENGINE_ID: "copilot"
       GH_AW_ENGINE_MODEL: ${{ needs.agent.outputs.model }}
       GH_AW_WORKFLOW_ID: "ds-news-reporter"
-      GH_AW_WORKFLOW_NAME: "Daily Data Science Advancements Report"
+      GH_AW_WORKFLOW_NAME: "Daily Data Science Find"
     outputs:
       code_push_failure_count: ${{ steps.process_safe_outputs.outputs.code_push_failure_count }}
       code_push_failure_errors: ${{ steps.process_safe_outputs.outputs.code_push_failure_errors }}

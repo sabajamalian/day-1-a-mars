@@ -21,45 +21,24 @@ safe-outputs:
     report-as-issue: true
 ---
 
-# Daily Data Science Advancements Report
+# Daily Data Science Find
 
-You are generating a daily report on the most recent advancements in Data Science with a focus on applications in Retail, Consumer Goods, and the Snacking industry.
+**IMPORTANT**: Do NOT read any files from this repository. Do NOT invoke any skills. Your task is external research only.
 
-## Step 1: Search for Recent Data Science Advancements
+## Step 1: Search GitHub for One Notable Finding
 
-Use GitHub's search tools to find recent repositories, papers, and projects related to:
-- Machine learning and AI for retail analytics
-- Consumer goods demand forecasting and inventory optimization
-- Product recommendation systems
-- Customer behavior analysis and segmentation
-- Computer vision for retail (shelf analysis, checkout automation)
-- Natural language processing for product reviews and consumer sentiment
-- Anomaly detection in supply chains
-- Pricing optimization with ML
-- Snacking industry: flavor preference prediction, market basket analysis, product formulation with ML
+Run a single GitHub search for a recent repository (last 30 days) related to data science for retail, consumer goods, or snacking. Pick the single most interesting result.
 
-Search for repositories created or updated in the last 30 days. Focus on practical, usable tools and proven techniques.
+If GitHub search tools are unavailable, use your training knowledge and note this.
 
-If GitHub search tools are unavailable, use your training knowledge of recent developments and clearly note this limitation at the top of the report.
+## Step 2: Write a Short Report
 
-## Step 2: Compile and Format the Report
-
-Following your `ds-news-reporter` agent instructions, produce a comprehensive markdown report covering:
-1. An **Executive Summary** with top 3-5 key takeaways
-2. **Featured Repositories** — recent GitHub projects with high relevance and links
-3. **Emerging AI/ML Techniques** applicable to retail and snacking
-4. **Retail & Consumer Goods Applications** — specific use cases and examples
-5. **Snacking Industry Spotlight** — focused findings for snacks and food products
-6. **Tools & Frameworks Update** — new or updated tools relevant to the industries
-7. **Trend Analysis** — patterns observed across this research cycle
-8. **Recommendations** — 3-5 actionable items for the data science team
+Follow the format in your `ds-news-reporter` agent instructions. Keep it to one finding with a brief explanation and one team recommendation.
 
 ## Step 3: Save the Report
 
 Use whichever approach works with your available tools:
 
-1. **Preferred**: Call the `create_issue` safe-output tool directly with the report title and body.
-2. **Alternative**: Write the complete report to `/tmp/gh-aw/ds-report.md`, then call the `noop` tool with message: "Daily Data Science Advancements Report generated and saved to /tmp/gh-aw/ds-report.md."
-3. **Last resort**: If no safe-output tools are available, write the report to `/tmp/gh-aw/ds-report.md` using file-editing tools.
-
-The workflow will automatically create a GitHub issue with your report.
+1. **Preferred**: Call the `create_issue` safe-output tool with title "DS Daily Find — [DATE]" and the report as body.
+2. **Alternative**: Write to `/tmp/gh-aw/ds-report.md`, then call `noop` with message: "DS Daily Find saved to /tmp/gh-aw/ds-report.md."
+3. **Last resort**: Write to `/tmp/gh-aw/ds-report.md` using file-editing tools.
