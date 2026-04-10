@@ -34,7 +34,7 @@ fi
 # ── Jupyter notebooks ────────────────────────────────────────
 if [[ "$FILE_PATH" == *.ipynb ]]; then
   if command -v jupyter &> /dev/null && command -v pylint &> /dev/null; then
-    TMPFILE=$(mktemp /tmp/pylint_nb_XXXXXX.py)
+    TMPFILE=$(mktemp -t pylint_nb_XXXXXX.py)
     jupyter nbconvert --to script "$FILE_PATH" --stdout > "$TMPFILE" 2>/dev/null
     pylint "$TMPFILE" --output-format=text --score=yes 2>&1 || true
     rm -f "$TMPFILE"

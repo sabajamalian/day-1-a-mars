@@ -38,9 +38,10 @@ Run pylint on the target file to get the initial list of violations:
   ```
 - **For `.ipynb` notebooks:**
   ```bash
-  jupyter nbconvert --to script <file.ipynb> --stdout > /tmp/nb_lint.py
-  pylint /tmp/nb_lint.py --output-format=text --score=yes
-  rm /tmp/nb_lint.py
+  TMPFILE=$(mktemp -t pylint_nb_XXXXXX.py)
+  jupyter nbconvert --to script <file.ipynb> --stdout > "$TMPFILE"
+  pylint "$TMPFILE" --output-format=text --score=yes
+  rm -f "$TMPFILE"
   ```
 
 Review the full output. Group issues by message code and severity (`error` → `warning` → `convention` → `refactor`).
