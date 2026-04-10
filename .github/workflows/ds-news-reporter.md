@@ -53,6 +53,6 @@ Following your `ds-news-reporter` agent instructions, produce a comprehensive ma
 
 Write the complete report to `/tmp/gh-aw/ds-report.md`.
 
-Then call the `noop` tool with message: "Daily Data Science Advancements Report generated and saved."
+Then call the `noop` tool with message: "Daily Data Science Advancements Report generated and saved to /tmp/gh-aw/ds-report.md."
 
 The workflow will automatically create a GitHub issue with your report after you complete this step.
