@@ -1,8 +1,6 @@
 ---
-description: "Runs daily to research and report the latest Data Science advancements with focus on Retail, Consumer Goods, and Snacking industry applications"
+description: "On-demand workflow to research and report the latest Data Science advancements with focus on Retail, Consumer Goods, and Snacking industry applications"
 on:
-  schedule:
-    - cron: '0 8 * * *'
   workflow_dispatch:
 
 permissions:

@@ -38,8 +38,6 @@
 
 name: "Daily Data Science Find"
 "on":
-  schedule:
-  - cron: "0 8 * * *"
   workflow_dispatch:
     inputs:
       aw_context:
